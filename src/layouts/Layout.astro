@@ -1,0 +1,43 @@
+---
+import Header from "../components/Header.astro";
+import BackgroundPaint from "../components/BackgroundPaint.astro";
+import '../styles/global.css';
+import '@fontsource-variable/geologica';
+import ScrollingLogo from '../components/ScrollingLogo.astro';
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tibugame</title>
+	</head>
+	<body>
+		<Header />
+		<BackgroundPaint />
+		<slot />
+		<ScrollingLogo class="mt-12" />
+		
+	</body>
+</html>
+<style>
+	:root{
+    color-scheme: light dark;
+    --backgroundcolor: #202020;
+	}
+	body {
+		font-family: 'Geologica', system-ui, sans-serif;
+		margin: 0;
+		background: var(--backgroundcolor);
+		position: relative;
+		min-height: 100vh;
+		min-width: 100vh;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+</style>
