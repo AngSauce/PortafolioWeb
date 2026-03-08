@@ -1,0 +1,84 @@
+<div class="text-3xl font-bold my-3 mx-2">Proyectos</div>
+<div
+id="slider"
+  class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 py-6 cursor-grab select-none [&::-webkit-scrollbar]:hidden"
+>
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 1
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 2
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 3
+  </div>
+    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 1
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 2
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 3
+  </div>
+    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 1
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 2
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 3
+  </div>
+    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 1
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 2
+  </div>
+
+  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
+    Proyecto 3
+  </div>
+</div>
+
+<script is:inline>
+const slider = document.querySelector('#slider');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  slider.classList.add("cursor-grabbing");
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+  slider.classList.remove("cursor-grabbing");
+});
+
+slider.addEventListener("mouseleave", () => {
+  isDown = false;
+  slider.classList.remove("cursor-grabbing");
+});
+
+slider.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2;
+  slider.scrollLeft = scrollLeft - walk;
+});
+</script>

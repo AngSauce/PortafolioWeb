@@ -4,6 +4,7 @@ import BackgroundPaint from "../components/BackgroundPaint.astro";
 import '../styles/global.css';
 import '@fontsource-variable/geologica';
 import ScrollingLogo from '../components/ScrollingLogo.astro';
+import Proyectos from "../components/Proyectos.astro";
 
 ---
 
@@ -15,20 +16,22 @@ import ScrollingLogo from '../components/ScrollingLogo.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Tibugame</title>
+		<title>Portafolio Jose Angel Saucedo Rangel</title>
 	</head>
 	<body>
 		<Header />
 		<BackgroundPaint />
 		<slot />
+		<Proyectos />
 		<ScrollingLogo class="mt-12" />
-		
 	</body>
 </html>
 <style>
 	:root{
     color-scheme: light dark;
     --backgroundcolor: #202020;
+	--profilemaincolor: oklch(23.42% 0.11355 263.817 / 0.336);
+	--profilesecondcolor: oklch(25.637% 0.14491 286.89 / 0.5);
 	}
 	body {
 		font-family: 'Geologica', system-ui, sans-serif;

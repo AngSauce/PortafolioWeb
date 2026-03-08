@@ -1,19 +1,22 @@
 ---
-import profileImage from "../assets/profile-image.png";
+import { Whatsapp } from 'simple-icons-astro';
+import ButtonShine from '../components/ButtonShine.astro';
 ---
-<header class="flex justify-between items-center py-2 px-6 md:px-32 opacity-90 backdrop-blur-md flex-row sticky top-0">
-    <img 
-    class="w-32 h-38 mb-2 sm:mb-0"
-    src={profileImage.src}
-    alt="Foto de perfil"
-    loading="lazy"
-    decoding="async"
-    />
+<header class="flex justify-center items-center py-2 px-6 md:px-32 opacity-90 backdrop-blur-md flex-row sticky top-0">
     <nav>
         <ul class="flex row gap-x-6">
-            <li><a href="#elemento1">Elemento1</a></li>
-            <li><a href="#elemento2">Elemento2</a></li>
-            <li><a href="#elemento3">Elemento3</a></li>
-            <li><a href="#elemento4">Elemento4</a></li>
+            
+            <li><a href="#elemento3"><ButtonShine text="Tecnologías" /></a></li>
+            <li><a href="#elemento3"><ButtonShine text="Experiencia Laboral" /></a></li>
+            <li>
+                <a
+                    href="https://wa.me/+5218334611062"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2"
+                >
+                    <ButtonShine icon={Whatsapp} text="Contacto" />
+                </a>
+            </li>
         </ul>
 </header>
