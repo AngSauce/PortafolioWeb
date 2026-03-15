@@ -5,6 +5,7 @@ import '../styles/global.css';
 import '@fontsource-variable/geologica';
 import ScrollingLogo from '../components/ScrollingLogo.astro';
 import Proyectos from "../components/Proyectos.astro";
+import Experiencia from "../components/Experiencia.astro";
 
 ---
 
@@ -24,6 +25,7 @@ import Proyectos from "../components/Proyectos.astro";
 		<slot />
 		<Proyectos />
 		<ScrollingLogo class="mt-12" />
+		<Experiencia />
 	</body>
 </html>
 <style>
@@ -39,7 +41,6 @@ import Proyectos from "../components/Proyectos.astro";
 		background: var(--backgroundcolor);
 		position: relative;
 		min-height: 100vh;
-		min-width: 100vh;
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
