@@ -1,45 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-// import profileImage from "../assets/profile-image.png";
-
-import profileImage2 from "../assets/profile-image2.png";
+import AboutMe from "../components/AboutMe.astro";
+import BackgroundPaint from "../components/BackgroundPaint.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Proyectos from "../components/Proyectos.astro";
+import ScrollingLogo from "../components/ScrollingLogo.astro";
+import Layout from "../layouts/Layout.astro";
+import Experiencia from "../components/Experiencia.astro";
+import workData from '../../cv.json';
 ---
 
 <Layout>
-	<main>
-		<section class="w-full mx-auto lg:max-w-[740px] py-4 px-2">
-<div class="relative w-90 h-90 mx-auto rounded-full 
-bg-gradient-to-r from-[var(--profilemaincolor)] to-[var(--profilesecondcolor)]
-overflow-hidden flex items-end justify-center my-9
-[mask-image:linear-gradient(to_bottom,black_28%,rgba(0,0,0,0.6)_74%,transparent_100%)] -z-10">
-
-  <img
-    src={profileImage2.src}
-    alt="Foto de perfil"
-    class="w-80 object-contain select-none pointer-events-none
-    drop-shadow-[0_15px_30px_rgba(99,102,241,0.5)]
-    [mask-image:linear-gradient(to_bottom,black_28%,rgba(0,0,0,0.6)_74%,transparent_100%)]"
-    draggable="false"
-  />
-
-</div>
-
-</div>
-					
-			<div class="flex flex-row">
-				<h1 class="text-5xl font-bold">Ing. José Ángel Saucedo Rangel</h1> 
-				<div class="flex flex-row ml-auto gap-4 mx-4">
-
-				</div>
-			</div>
-			<div class="my-4">
-				<h2 class="text-lg text-left max-w-prose leading-relaxed" >Ingeniero en Tecnologías de la Información con experiencia en desarrollo web, aplicaciones móviles y
-				administración de plataformas educativas. Enfocado en la optimización de procesos tecnológicos, integración de
-				servicios web y soporte técnico integral. Destaco por mi capacidad de adaptación a nuevas herramientas, solución
-				de problemas y trabajo en entornos colaborativos.</h2>
-			</div>
-		</section>
-		
-	</main>
+  <Header />
+  <BackgroundPaint />
+  <main>
+    <AboutMe />
+  </main>
+  <Proyectos />
+  <ScrollingLogo class="mt-12" />
+  <Experiencia experiencias={workData.work} />
+  <Footer />
 </Layout>
-

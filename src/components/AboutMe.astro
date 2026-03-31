@@ -1,0 +1,66 @@
+---
+import profileImage2 from "../assets/profile-image2.png";
+---
+
+<section class="h-dvh h-screen">
+  <div class="container lg:max-w-185 py-4 px-2 w-[90%] md:w-[80%] mx-auto">
+    <div class="w-full">
+      <h2 class="text-2xl font-bold text-center">
+        Ingeniero en Tecnologías de la Información (TI)
+      </h2>
+    </div>
+    <div
+      class="relative w-90 h-90 mx-auto rounded-full
+bg-linear-to-r from-(--profilemaincolor) to-(--profilesecondcolor)
+overflow-hidden flex items-end justify-center my-9
+mask-[linear-gradient(to_bottom,black_28%,rgba(0,0,0,0.6)_74%,transparent_100%)] -z-10"
+    >
+      <img
+        src={profileImage2.src}
+        alt="Foto de perfil"
+        class="w-80 object-contain select-none pointer-events-none
+    drop-shadow-[0_15px_30px_rgba(99,102,241,0.5)]
+    mask-[linear-gradient(to_bottom,black_28%,rgba(0,0,0,0.6)_74%,transparent_100%)]"
+        draggable="false"
+      />
+    </div>
+
+    <div class="justify-center gap-6 flex-col flex items-center md:w-full">
+      <div class="w-full">
+        <h1 class="text-5xl font-bold">Ing. José Ángel Saucedo Rangel</h1>
+      </div>
+      <div class="w-full">
+        <h3 class="text-xl text-gray-250 text-center">
+          Especialista en Desarrollo Web y Soporte Técnico Integral.
+        </h3>
+      </div>
+    </div>
+    <div class="my-4 flex justify-center">
+      <h2 class="text-md text-left max-w-full leading-relaxed">
+        Enfocado en la optimización de procesos tecnológicos, desarrollo de
+        aplicaciones web y soporte técnico integral. Destaco por mi capacidad de
+        adaptación a nuevas herramientas, solución de problemas y trabajo en
+        entornos colaborativos.
+      </h2>
+    </div>
+  </div>
+</section> 
+
+<style>
+    h2 {
+font-weight: bold;
+background: linear-gradient(90deg, #949494, #c4c4c4, #6b6b6b);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+from {
+background-position: -200%;
+}
+to {
+background-position: 200%;
+}
+}
+</style>
