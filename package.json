@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource-variable/geologica": "^5.2.8",
     "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+    "@justinribeiro/lite-youtube": "^1.9.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
     "normalize.css": "^8.0.1",
