@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="text-3xl font-bold my-6 mx-2">Proyectos</div>
 <div
 id="slider"
@@ -6,79 +7,249 @@ id="slider"
   <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
     Proyecto 1
   </div>
+=======
+---
+import cv from '../../cv.json';
+>>>>>>> d735599 (feat: improve proyectos cards and docs)
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 2
-  </div>
+interface ProjectImage {
+  url: string;
+  alt?: string;
+}
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 3
-  </div>
-    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 1
-  </div>
+interface RawProject {
+  name: string;
+  description?: string;
+  images?: ProjectImage[];
+  video?: string;
+  idvideo?: string;
+  url?: string;
+}
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 2
-  </div>
+type SectionKey = 'icest' | 'tibugames' | 'expertices';
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 3
-  </div>
-    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 1
-  </div>
+type Slide =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; videoId: string }
+  | { type: 'placeholder' };
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 2
-  </div>
+const sectionOrder: SectionKey[] = ['icest', 'tibugames', 'expertices'];
+const folderMap: Record<SectionKey, string> = {
+  icest: 'icest',
+  tibugames: 'tibugame',
+  expertices: 'expertices',
+};
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 3
-  </div>
-    <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 1
-  </div>
+const sectionLabels: Record<SectionKey, string> = {
+  icest: 'Icest en Línea',
+  tibugames: 'TiBu Games',
+  expertices: 'Expertices',
+};
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 2
-  </div>
+const placeholderDescription =
+  'Contenido en proceso. Estoy actualizando esta sección con los detalles más recientes.';
 
-  <div class="min-w-[800px] snap-start h-[600px] bg-zinc-200 rounded-xl flex items-center justify-center transition-transform duration-300 hover:scale-110">
-    Proyecto 3
+const projectSections = (cv.projects?.[0] ?? {}) as Partial<Record<SectionKey, RawProject[]>>;
+
+const assetMap: Record<string, string> = import.meta.glob('../assets/Proyectos/**', {
+  query: '?url',
+  import: 'default',
+  eager: true,
+});
+
+const resolveImageUrl = (folder: string, file?: string) => {
+  if (!file) return undefined;
+  const candidate = `../assets/Proyectos/${folder}/${file}`;
+  return assetMap[candidate];
+};
+
+const extractYouTubeId = (value?: string) => {
+  if (!value) return undefined;
+  const patterns = [/v=([\w-]+)/, /youtu\.be\/([\w-]+)/, /embed\/([\w-]+)/];
+  for (const pattern of patterns) {
+    const match = value.match(pattern);
+    if (match?.[1]) return match[1];
+  }
+  return undefined;
+};
+
+const sections = sectionOrder.map((key) => {
+  const entries = projectSections[key] ?? [];
+  const project: RawProject = entries[0] ?? {
+    name: sectionLabels[key],
+    description: placeholderDescription,
+    images: [],
+  };
+  const slides: Slide[] = [];
+
+  (project.images ?? []).forEach((image) => {
+    const src = resolveImageUrl(folderMap[key], image.url);
+    if (src) {
+      slides.push({
+        type: 'image',
+        src,
+        alt: image.alt ?? project.name ?? sectionLabels[key],
+      });
+    }
+  });
+
+  const videoId = project.idvideo ?? extractYouTubeId(project.video);
+  if (videoId) {
+    slides.push({ type: 'video', videoId });
+  }
+
+  if (!slides.length) {
+    slides.push({ type: 'placeholder' });
+  }
+
+  return {
+    key,
+    label: sectionLabels[key] ?? project.name ?? 'Proyecto',
+    project,
+    slides,
+  };
+});
+---
+
+<section class="mx-6 md:mx-20" aria-label="Proyectos destacados">
+  <div class="text-3xl font-bold my-3 mx-2">Proyectos</div>
+  <div
+    id="slider"
+    class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 py-6 cursor-grab select-none [&::-webkit-scrollbar]:hidden"
+  >
+    {sections.map((section, cardIndex) => (
+      <article
+        id={`card${cardIndex + 1}`}
+        data-card
+        class={
+          'snap-start w-full min-w-190 min-h-110 bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col hover:scale-105 transition-transform duration-300 border border-gray-100'
+        }
+      >
+        <div class="px-4 pt-5">
+          <p class="text-xs uppercase tracking-[0.4em] text-gray-400">{section.label}</p>
+          <h3 class="text-xl font-bold text-gray-900 mt-2">{section.project.name ?? section.label}</h3>
+          <p class="text-sm text-gray-600 leading-relaxed mt-2">
+            {section.project.description?.trim() || placeholderDescription}
+          </p>
+        </div>
+        <div class="relative px-4 pt-4 pb-6">
+          <div class="relative h-64 md:h-72" data-card-carousel>
+            {section.slides.map((slide, slideIndex) => (
+              <div
+                class="transition-opacity duration-500 ease-in-out opacity-0 absolute inset-0 flex items-center justify-center bg-gray-100"
+                data-carousel-item
+                data-slide-index={slideIndex}
+              >
+                {slide.type === 'image' ? (
+                  <img src={slide.src} alt={slide.alt} class="h-full w-full object-cover" loading="lazy" />
+                ) : slide.type === 'video' ? (
+                  <lite-youtube videoid={slide.videoId} style="width:100%;height:100%;"></lite-youtube>
+                ) : (
+                  <div class="text-xs text-gray-400 uppercase tracking-[0.4em]">
+                    Próximamente
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div class="absolute inset-0 flex items-center justify-between px-3 pointer-events-none">
+            <button
+              type="button"
+              data-card-carousel-prev
+              class="pointer-events-auto bg-white/80 text-gray-700 text-sm font-semibold rounded-full p-2 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              aria-label="Anterior"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              data-card-carousel-next
+              class="pointer-events-auto bg-white/80 text-gray-700 text-sm font-semibold rounded-full p-2 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              aria-label="Siguiente"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+        <div class="px-4 pb-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+          {section.project.url ? (
+            <a
+              class="text-blue-700 hover:text-blue-900 font-semibold"
+              href={section.project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver sitio
+            </a>
+          ) : (
+            <span class="text-gray-400">Sin enlace público</span>
+          )}
+          <span>{section.slides.length} elementos</span>
+        </div>
+      </article>
+    ))}
   </div>
-</div>
+</section>
 
 <script is:inline>
-const slider = document.querySelector('#slider');
+  const slider = document.querySelector('#slider');
+  if (slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('cursor-grabbing');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('cursor-grabbing');
+    });
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('cursor-grabbing');
+    });
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
 
-let isDown = false;
-let startX;
-let scrollLeft;
+  const carousels = document.querySelectorAll('[data-card-carousel]');
+  carousels.forEach((carousel) => {
+    const card = carousel.closest('[data-card]');
+    if (!card) return;
+    const items = Array.from(carousel.querySelectorAll('[data-carousel-item]'));
+    if (!items.length) return;
+    let current = 0;
 
-slider.addEventListener("mousedown", (e) => {
-  isDown = true;
-  slider.classList.add("cursor-grabbing");
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+    const showItem = (index) => {
+      items.forEach((item, idx) => {
+        const isActive = idx === index;
+        item.classList.toggle('opacity-100', isActive);
+        item.classList.toggle('opacity-0', !isActive);
+        item.style.zIndex = isActive ? '1' : '0';
+      });
+    };
 
-slider.addEventListener("mouseup", () => {
-  isDown = false;
-  slider.classList.remove("cursor-grabbing");
-});
+    showItem(current);
 
-slider.addEventListener("mouseleave", () => {
-  isDown = false;
-  slider.classList.remove("cursor-grabbing");
-});
+    const prevButton = card.querySelector('[data-card-carousel-prev]');
+    const nextButton = card.querySelector('[data-card-carousel-next]');
 
-slider.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
+    prevButton?.addEventListener('click', () => {
+      current = (current - 1 + items.length) % items.length;
+      showItem(current);
+    });
 
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 2;
-  slider.scrollLeft = scrollLeft - walk;
-});
+    nextButton?.addEventListener('click', () => {
+      current = (current + 1) % items.length;
+      showItem(current);
+    });
+  });
 </script>

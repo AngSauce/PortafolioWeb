@@ -1,6 +1,7 @@
 {
   "basics": {
     "name": "José Ángel Saucedo Rangel",
+<<<<<<< HEAD
     "label": "Full Stack Developer con más de 15 años de experiencia & Creador de Contenido de Programación",
     "image": "/profile-image2.png",
     "email": "ingangelsaucedo@gmail.com",
@@ -10,12 +11,24 @@
     "location": {
       "address": "Sor Juana Inés de la Cruz #2013",
       "postalCode": "89602",
+=======
+    "label": "Ingeniero en Tecnologías de la Información",
+    "image": "",
+    "email": "",
+    "phone": "+52 833 461 1062",
+    "url": "https://angsauce.github.io/PortafolioWeb/",
+    "summary": "Ingeniero en Tecnologías de la Información con experiencia en desarrollo web, aplicaciones móviles, administración de plataformas educativas y soporte técnico. Especializado en integración de servicios web, optimización de procesos tecnológicos y gestión de sistemas digitales.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+>>>>>>> d735599 (feat: improve proyectos cards and docs)
       "city": "Altamira",
       "countryCode": "MX",
       "region": "Tamaulipas"
     },
     "profiles": [
       {
+<<<<<<< HEAD
         "network": "LinkedIn",
         "username": "midudev",
         "url": "https://linkedin.com/in/midudev"
@@ -29,11 +42,17 @@
         "network": "GitHub",
         "username": "midudev",
         "url": "https://github.com/midudev"
+=======
+        "network": "Portafolio",
+        "username": "angsauce",
+        "url": "https://angsauce.github.io/PortafolioWeb/"
+>>>>>>> d735599 (feat: improve proyectos cards and docs)
       }
     ]
   },
   "work": [
     {
+<<<<<<< HEAD
       "name": "midudev",
       "position": "Divulgador sobre Programación Web",
       "url": "https://twitch.tv/midudev",
@@ -185,10 +204,123 @@
       "keywords": [
         "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
       ]
+=======
+      "name": "Instituto de Ciencias y Estudios Superiores de Tamaulipas",
+      "position": "Auxiliar Tecnológico | Producción",
+      "url": "",
+      "startDate": "2022-01-01",
+      "endDate": "",
+      "summary": "Administración de plataformas educativas y desarrollo de contenido digital.",
+      "highlights": [
+        "Administración de Moodle y WordPress",
+        "Gestión de usuarios, roles y respaldos",
+        "Creación de contenido educativo (H5P, SCORM)",
+        "Integración de contenido externo mediante iFrames",
+        "Uso de herramientas de IA para contenido educativo"
+      ]
+    },
+    {
+      "name": "AUTEM",
+      "position": "Programador Front-End",
+      "url": "",
+      "startDate": "2021-01-01",
+      "endDate": "2021-12-31",
+      "summary": "Desarrollo de interfaces web y aplicaciones móviles.",
+      "highlights": [
+        "Desarrollo con Laravel, HTML, CSS y JavaScript",
+        "Integración de bases de datos relacionales",
+        "Desarrollo de aplicación Android con APIs REST",
+        "Implementación de mapas con OpenMaps",
+        "Uso de SQLite en aplicaciones móviles"
+      ]
+    },
+    {
+      "name": "INGYSTEC",
+      "position": "Técnico en Computadoras",
+      "url": "",
+      "startDate": "2016-01-01",
+      "endDate": "2017-12-31",
+      "summary": "Soporte técnico y mantenimiento de equipos.",
+      "highlights": [
+        "Diagnóstico y reparación de hardware",
+        "Mantenimiento de computadoras y dispositivos móviles",
+        "Soporte técnico a usuarios",
+        "Configuración de software y periféricos"
+      ]
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Universidad Politécnica de Altamira",
+      "url": "",
+      "area": "Tecnologías de la Información",
+      "studyType": "Ingeniería",
+      "startDate": "2015-01-01",
+      "endDate": "2020-12-31",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "awards": [],
+  "certificates": [
+    {
+      "name": "Sistema de Gestión de Calidad ISO 9001",
+      "date": "2022-01-01",
+      "issuer": "",
+      "url": ""
+    },
+    {
+      "name": "Certificación Moodle para Administradores",
+      "date": "2024-01-01",
+      "issuer": "",
+      "url": ""
+    },
+    {
+      "name": "Certificación Moodle para Asesores",
+      "date": "2024-01-01",
+      "issuer": "",
+      "url": ""
+    },
+    {
+      "name": "Curso de Informática y Mantenimiento de Computadoras",
+      "date": "2015-01-01",
+      "issuer": "",
+      "url": ""
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Desarrollo Web",
+      "level": "Avanzado",
+      "keywords": ["HTML", "CSS", "JavaScript", "TypeScript", "PHP"]
+    },
+    {
+      "name": "Frameworks y Tecnologías",
+      "level": "Avanzado",
+      "keywords": ["Laravel", "Bootstrap", "Tailwind CSS", "WebGL", "APIs REST", "OpenMaps"]
+    },
+    {
+      "name": "Bases de Datos",
+      "level": "Avanzado",
+      "keywords": ["MySQL", "SQL Server", "SQLite"]
+    },
+    {
+      "name": "Herramientas",
+      "level": "Avanzado",
+      "keywords": ["Git", "GitHub", "GitLab"]
+    },
+    {
+      "name": "Plataformas",
+      "level": "Avanzado",
+      "keywords": ["Moodle", "WordPress", "Unity", "Microsoft 365"]
+>>>>>>> d735599 (feat: improve proyectos cards and docs)
     }
   ],
   "languages": [
     {
+<<<<<<< HEAD
       "language": "Spanish",
       "fluency": "Native speaker"
     },
@@ -273,3 +405,51 @@
     }
   ]
 }
+=======
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Intermedio (B1)"
+    }
+  ],
+  "interests": [],
+  "references": [],
+  "projects": [{
+    "icest": [{
+        "name": "Icest en Línea - Plataforma Educativa",
+        "description": "Description...",
+        "images": [
+            { "url": "portada.jpeg", "alt": "Portada" },
+            { "url": "materia.jpeg", "alt": "Materia" },
+            { "url": "wordpress.jpeg", "alt": "WordPress" }
+        ],
+        "video": "https://www.youtube.com/watch?v=example",
+        "url": "https://project.com/"
+        }],
+    "tibugames": [{
+        "name": "Tibugames - Desarrollo de Videojuegos",
+        "description": "Description...",
+        "images": [
+            { "url": "portada.jpeg", "alt": "Portada" },
+            { "url": "inicio.jpeg", "alt": "Materia" },
+            { "url": "nivel3.jpeg", "alt": "WordPress" }
+        ],
+        "idvideo": "8X2kcbj2wFM",
+        "url": "https://icestgames.com.mx/"
+    }],
+        "expertices": [{
+        "name": "Expertices - Plataforma de cursos",
+        "description": "",
+        "images": [
+            { "url": "portada.jpeg", "alt": "Portada" },
+            { "url": "cursos.jpeg", "alt": "Materia" },
+            { "url": "inicio.jpeg", "alt": "Inicio" }
+            ],
+        "idvideo": "XVGEL9uJICA",
+        "url": "https://www.expertices.com/"
+    }]
+  }]
+}
+>>>>>>> d735599 (feat: improve proyectos cards and docs)
